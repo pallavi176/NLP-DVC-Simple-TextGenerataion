@@ -139,5 +139,7 @@ configs/secrets.yaml
 
 # add your env folder here if its there
 
+logs/running_logs.log
+artifacts/
 
 
