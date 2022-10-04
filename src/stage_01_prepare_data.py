@@ -7,7 +7,7 @@ import logging
 import pandas as pd
 from tqdm import tqdm
 from src.utils.common import read_yaml, create_directories
-from src.utils.data_preprocess import preprocess_df
+from src.utils.data_process import preprocess_df
 import warnings
 warnings.filterwarnings('ignore')
 warnings.simplefilter('ignore')
