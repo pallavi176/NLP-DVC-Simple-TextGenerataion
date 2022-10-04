@@ -7,7 +7,10 @@ import logging
 import pandas as pd
 from tqdm import tqdm
 from src.utils.common import read_yaml, create_directories
-
+from src.utils.data_preprocess import preprocess_df
+import warnings
+warnings.filterwarnings('ignore')
+warnings.simplefilter('ignore')
 
 STAGE = "STAGE_1"
 
@@ -28,8 +31,8 @@ def main(config_path, params_path):
     input_data = os.path.join(source_data["data_dir"], source_data["data_file"])
     sheet_name = source_data["sheet_name"]
 
-    df=pd.read_excel(input_data, sheet_name=sheet_name)
-    print(df.head())
+    text_data=preprocess_df(input_data, sheet_name)
+    print(text_data[:1000])
 
 
     # split = params["prepare"]["split"]
