@@ -38,3 +38,8 @@ def preprocess_df(input_data, sheet_name):
     text = re.sub(r"\s+", " ", text)
 
     return text
+
+def split_input_target(chunk):
+    input_text = chunk[:-1] # First Citize
+    target_text = chunk[1:] # irst Citizen
+    return input_text, target_text

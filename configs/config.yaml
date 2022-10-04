@@ -10,3 +10,7 @@ artifacts:
   PREPARED_DATA: prepared
   TRAIN_DATA: train.txt
   TEST_DATA: test.txt
+  FEATURIZED_DATA: features
+  VOCAB_DATA: vocab_data.pkl
+  TEXT_AS_INTEGER: text_as_integer.pkl
+  FEATURIZED_DATASET: dataset.h5
