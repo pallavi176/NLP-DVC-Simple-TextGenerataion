@@ -1,11 +1,8 @@
 
 import os
-import shutil
 import random
 import argparse
 import logging
-import pandas as pd
-from tqdm import tqdm
 from src.utils.common import read_yaml, create_directories
 from src.utils.data_process import preprocess_df
 import warnings
@@ -21,7 +18,6 @@ logging.basicConfig(
     filemode="a"
     )
 
-
 def main(config_path, params_path):
    ## Converting XML data to csv
     config = read_yaml(config_path)
@@ -32,22 +28,22 @@ def main(config_path, params_path):
     sheet_name = source_data["sheet_name"]
 
     text_data=preprocess_df(input_data, sheet_name)
-    print(text_data[:1000])
+    #print(text_data[:1000])
 
+    #split = params["prepare"]["split"]
+    seed = params["prepare"]["seed"]
+    random.seed(seed)
 
-    # split = params["prepare"]["split"]
-    # seed = params["prepare"]["seed"]
-    # random.seed(seed)
+    artifacts = config["artifacts"]
+    prepared_data_dir_path = os.path.join(artifacts["ARTIFACTS_DIR"], artifacts["PREPARED_DATA"])
+    create_directories([prepared_data_dir_path])
 
-    # artifacts = config["artifacts"]
-    # prepared_data_dir_path = os.path.join(artifacts["ARTIFACTS_DIR"], artifacts["PREPARED_DATA"])
-    # create_directories([prepared_data_dir_path])
+    train_data_path = os.path.join(prepared_data_dir_path, artifacts["TRAIN_DATA"])
+    #test_data_path = os.path.join(prepared_data_dir_path, artifacts["TEST_DATA"])
 
-    # train_data_path = os.path.join(prepared_data_dir_path, artifacts["TRAIN_DATA"])
-    # test_data_path = os.path.join(prepared_data_dir_path, artifacts["TEST_DATA"])
+    with open(train_data_path, "w") as fd_train:
+        fd_train.write(f"{text_data}")
     
-
-
 if __name__ == '__main__':
     args = argparse.ArgumentParser()
     args.add_argument("--config", "-c", default="configs/config.yaml")

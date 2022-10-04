@@ -8,5 +8,5 @@ source_data:
 artifacts:
   ARTIFACTS_DIR: artifacts
   PREPARED_DATA: prepared
-  TRAIN_DATA: train.csv
+  TRAIN_DATA: train.txt
   TEST_DATA: test.csv

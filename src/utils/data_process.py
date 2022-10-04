@@ -30,6 +30,10 @@ def preprocess_df(input_data, sheet_name):
 
     text = " ".join(codes_desc['Descriptions'])
 
+    # Remove Non- ascii characters
+    encoded_string = text.encode("ascii", "ignore")
+    text = encoded_string.decode()
+
     # Remove extra spaces
     text = re.sub(r"\s+", " ", text)
 
