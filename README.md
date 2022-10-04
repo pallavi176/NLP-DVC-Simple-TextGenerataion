@@ -38,3 +38,7 @@ dvc init
 ```bash
 git rm --cached logs/running_logs.log
 ```
+
+```bash
+pip install ipykernel
+```
