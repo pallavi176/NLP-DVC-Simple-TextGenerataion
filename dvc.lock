@@ -4,20 +4,20 @@ stages:
     cmd: python src/stage_01_prepare_data.py --config=configs/config.yaml --params=params.yaml
     deps:
     - path: configs/config.yaml
-      md5: 9605dc0291f0684a95404315292e32e0
-      size: 255
+      md5: ff357d5bec4b952c9d8b4051634d2e24
+      size: 428
     - path: data/CTBM.raw.xlsx
       md5: 6b40fbe4df623abda8d0046ab31d95c5
       size: 818003
     - path: src/stage_01_prepare_data.py
-      md5: 9ff4b33d092f9250a7315c28b7e488eb
-      size: 2016
+      md5: 58938c6477eeb58e0f1711de5cd29687
+      size: 2014
     - path: src/utils/common.py
       md5: d162961d817182441383bdb0e674e685
       size: 675
     - path: src/utils/data_process.py
-      md5: 0d2fefb5e05bdfd0bf402bd41cebace4
-      size: 1222
+      md5: 6fa50f3d97dc7ca1dc9e6f86bd03308a
+      size: 1382
     params:
       params.yaml:
         prepare.seed: 2021
@@ -25,3 +25,37 @@ stages:
     - path: artifacts/prepared/train.txt
       md5: f81bd60685db13e1a630caf438c766b1
       size: 323393
+  featurize_data:
+    cmd: python src/stage_02_featurization.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - path: artifacts/prepared/train.txt
+      md5: f81bd60685db13e1a630caf438c766b1
+      size: 323393
+    - path: configs/config.yaml
+      md5: ff357d5bec4b952c9d8b4051634d2e24
+      size: 428
+    - path: src/stage_02_featurization.py
+      md5: ac5b7fea65fb706c64911993a9a4d103
+      size: 3644
+    - path: src/utils/common.py
+      md5: d162961d817182441383bdb0e674e685
+      size: 675
+    - path: src/utils/data_process.py
+      md5: 6fa50f3d97dc7ca1dc9e6f86bd03308a
+      size: 1382
+    params:
+      params.yaml:
+        featurize.batch_size: 64
+        featurize.buffer_size: 10000
+        featurize.seq_length: 100
+    outs:
+    - path: artifacts/features/dataset/dataset.h5
+      md5: 2aa79d6dd64e26e58a692817bea6e88b.dir
+      size: 2563278
+      nfiles: 3
+    - path: artifacts/features/text_as_integer.pkl
+      md5: 5a121aa7f3c6b8bc37d9a62e67f8d2d5
+      size: 1293829
+    - path: artifacts/features/vocab_data.pkl
+      md5: 06961b55fd40d8c5eddb9afc24ae46ec
+      size: 304

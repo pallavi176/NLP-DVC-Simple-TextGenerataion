@@ -28,3 +28,5 @@ stages:
     outs:
     - artifacts/features/vocab_data.pkl
     - artifacts/features/text_as_integer.pkl
+    - artifacts/features/dataset/dataset.h5
+  
