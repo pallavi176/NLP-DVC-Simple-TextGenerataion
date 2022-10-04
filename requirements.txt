@@ -1,9 +1,10 @@
 ### dependency
 tqdm
 dvc
-pandas
+pandas==0.25.3
 numpy
+tensorflow
 PyYAML
 
 ### local packages -
-# -e . # << uncomment this to install from setup.py
+-e .

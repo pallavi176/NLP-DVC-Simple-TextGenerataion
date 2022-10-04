@@ -1,5 +1,5 @@
-# dvc-project-template
-DVC project template
+# NLP-DVC-Simple-TextGenerataion
+NLP-DVC-Simple-TextGenerataion
 
 ## STEPS -
 
