@@ -141,5 +141,5 @@ configs/secrets.yaml
 
 logs/running_logs.log
 artifacts/
-
+data/
 
