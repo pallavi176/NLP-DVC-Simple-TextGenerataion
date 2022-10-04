@@ -12,3 +12,19 @@ stages:
     - prepare.seed
     outs:
     - artifacts/prepared/train.txt
+
+  featurize_data:
+    cmd: python src/stage_02_featurization.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - src/stage_02_featurization.py
+    - artifacts/prepared/train.txt
+    - configs/config.yaml
+    - src/utils/common.py
+    - src/utils/data_process.py
+    params:
+    - featurize.seq_length
+    - featurize.batch_size
+    - featurize.buffer_size
+    outs:
+    - artifacts/features/vocab_data.pkl
+    - artifacts/features/text_as_integer.pkl
