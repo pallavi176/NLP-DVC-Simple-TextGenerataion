@@ -1,0 +1,27 @@
+schema: '2.0'
+stages:
+  prepare_data:
+    cmd: python src/stage_01_prepare_data.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - path: configs/config.yaml
+      md5: 9605dc0291f0684a95404315292e32e0
+      size: 255
+    - path: data/CTBM.raw.xlsx
+      md5: 6b40fbe4df623abda8d0046ab31d95c5
+      size: 818003
+    - path: src/stage_01_prepare_data.py
+      md5: 9ff4b33d092f9250a7315c28b7e488eb
+      size: 2016
+    - path: src/utils/common.py
+      md5: d162961d817182441383bdb0e674e685
+      size: 675
+    - path: src/utils/data_process.py
+      md5: 0d2fefb5e05bdfd0bf402bd41cebace4
+      size: 1222
+    params:
+      params.yaml:
+        prepare.seed: 2021
+    outs:
+    - path: artifacts/prepared/train.txt
+      md5: f81bd60685db13e1a630caf438c766b1
+      size: 323393

@@ -1,8 +1,14 @@
 # add stages here 
-# stages:
-#   stage_name:
-#     cmd: python src/stage_01______.py
-#     deps:
-#     - src/stage_01______.py
-#     outs:
-#     - output_data_of_file_path
+stages:
+  prepare_data:
+    cmd: python src/stage_01_prepare_data.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - src/stage_01_prepare_data.py
+    - data/CTBM.raw.xlsx
+    - configs/config.yaml
+    - src/utils/common.py
+    - src/utils/data_process.py
+    params:
+    - prepare.seed
+    outs:
+    - artifacts/prepared/train.txt

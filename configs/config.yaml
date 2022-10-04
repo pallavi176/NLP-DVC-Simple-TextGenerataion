@@ -9,4 +9,4 @@ artifacts:
   ARTIFACTS_DIR: artifacts
   PREPARED_DATA: prepared
   TRAIN_DATA: train.txt
-  TEST_DATA: test.csv
+  TEST_DATA: test.txt
