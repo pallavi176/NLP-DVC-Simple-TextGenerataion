@@ -4,7 +4,7 @@ import logging
 import joblib
 import numpy as np
 import tensorflow as tf
-from src.utils.common import read_yaml, create_directories, save_json
+from src.utils.common import read_yaml, create_directories
 from src.utils.data_process import split_input_target
 import warnings
 warnings.filterwarnings('ignore')
