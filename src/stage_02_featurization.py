@@ -37,8 +37,8 @@ def main(config_path, params_path):
     text_as_int_file = os.path.join(featurized_data_dir_path, artifacts["TEXT_AS_INTEGER"])
 
     featurized_dataset_dir = os.path.join(featurized_data_dir_path, artifacts["FEATURIZED_DATASET_DIR"])
-    create_directories([featurized_dataset_dir])
-    featurized_dataset_file_path = os.path.join(featurized_dataset_dir, artifacts["FEATURIZED_DATASET_FILE"])
+    #create_directories([featurized_dataset_dir])
+    #featurized_dataset_file_path = os.path.join(featurized_dataset_dir, artifacts["FEATURIZED_DATASET_FILE"])
 
     seq_length = params["featurize"]["seq_length"]
     batch_size = params["featurize"]["batch_size"]
@@ -75,8 +75,9 @@ def main(config_path, params_path):
 
     # Create Training batch
     dataset = dataset.shuffle(buffer_size).batch(batch_size, drop_remainder=True)
-    dataset.save(featurized_dataset_file_path)
-    #joblib.dump(dataset, featurized_dataset)
+    #dataset.save(featurized_dataset_file_path)
+    tf.saved_model.save(dataset, featurized_dataset_dir)
+    #joblib.dump(dataset, featurized_dataset_file_path)
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()
