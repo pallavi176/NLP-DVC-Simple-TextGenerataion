@@ -14,6 +14,6 @@ artifacts:
   VOCAB_DATA: vocab_data.pkl
   TEXT_AS_INTEGER: text_as_integer.pkl
   FEATURIZED_DATASET_DIR: dataset
-  FEATURIZED_DATASET_FILE: dataset.h5
+  FEATURIZED_DATASET_FILE: dataset.tfrecord
   MODEL_DIR: model
   CHECKPOINT_DIR: training_ckpt
