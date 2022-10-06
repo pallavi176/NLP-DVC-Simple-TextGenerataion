@@ -76,7 +76,7 @@ def main(config_path, params_path):
     # Create Training batch
     dataset = dataset.shuffle(buffer_size).batch(batch_size, drop_remainder=True)
     #dataset.save(featurized_dataset_file_path)
-    #tf.saved_model.save(dataset, featurized_dataset_dir)
+    tf.saved_model.save(dataset, featurized_dataset_dir)
     #joblib.dump(dataset, featurized_dataset_file_path)
 
 if __name__ == '__main__':
