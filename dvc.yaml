@@ -50,4 +50,21 @@ stages:
     - train.verbose
     outs:
     - artifacts/model
+
+  evaluate:
+    cmd: python src/stage_04_evaluate.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - src/stage_04_evaluate.py
+    - artifacts/features/vocab_data.pkl
+    - artifacts/features/text_as_integer.pkl
+    - artifacts/model
+    - configs/config.yaml
+    - src/utils/common.py
+    - src/utils/models.py
+    params:
+    - train.embedding_dim
+    - train.rnn_units
+    - evaluate.start_string
+    - evaluate.no_of_chars_to_gen
+
   

@@ -82,8 +82,8 @@ stages:
       md5: d162961d817182441383bdb0e674e685
       size: 675
     - path: src/utils/models.py
-      md5: 620acf8b71382ff91d277a81baec32e5
-      size: 744
+      md5: 625a0cf05dfac1d6c2db93c53e449f67
+      size: 1696
     params:
       params.yaml:
         featurize.batch_size: 64
@@ -94,6 +94,37 @@ stages:
         train.verbose: 2
     outs:
     - path: artifacts/model
-      md5: a6d963cff51d799ff5e15f0bec625129.dir
+      md5: ce658ad8f7e2a1c907c4c5413343a3f7.dir
       size: 143500263
       nfiles: 7
+  evaluate:
+    cmd: python src/stage_04_evaluate.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - path: artifacts/features/text_as_integer.pkl
+      md5: 5a121aa7f3c6b8bc37d9a62e67f8d2d5
+      size: 1293829
+    - path: artifacts/features/vocab_data.pkl
+      md5: 06961b55fd40d8c5eddb9afc24ae46ec
+      size: 304
+    - path: artifacts/model
+      md5: ce658ad8f7e2a1c907c4c5413343a3f7.dir
+      size: 143500263
+      nfiles: 7
+    - path: configs/config.yaml
+      md5: 9a04455027a3609794de37640b030e1d
+      size: 487
+    - path: src/stage_04_evaluate.py
+      md5: fd27a1a1a01565418cb3aa602314858b
+      size: 2987
+    - path: src/utils/common.py
+      md5: d162961d817182441383bdb0e674e685
+      size: 675
+    - path: src/utils/models.py
+      md5: 625a0cf05dfac1d6c2db93c53e449f67
+      size: 1696
+    params:
+      params.yaml:
+        evaluate.no_of_chars_to_gen: 1000
+        evaluate.start_string: shoe
+        train.embedding_dim: 256
+        train.rnn_units: 1024
