@@ -15,3 +15,7 @@ train:
   epochs: 3
   optimizer: adam
   verbose: 2
+
+evaluate:
+  start_string: shoe
+  no_of_chars_to_gen: 1000
