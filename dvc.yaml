@@ -28,5 +28,26 @@ stages:
     outs:
     - artifacts/features/vocab_data.pkl
     - artifacts/features/text_as_integer.pkl
-    - artifacts/features/dataset/dataset.h5
+    - artifacts/features/dataset.tfrecord
+
+  
+  train:
+    cmd: python src/stage_03_train.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - src/stage_03_train.py
+    - artifacts/features/vocab_data.pkl
+    - artifacts/features/text_as_integer.pkl
+    - artifacts/features/dataset.tfrecord
+    - configs/config.yaml
+    - src/utils/common.py
+    - src/utils/models.py
+    params:
+    - featurize.batch_size
+    - train.embedding_dim
+    - train.rnn_units
+    - train.epochs
+    - train.optimizer
+    - train.verbose
+    outs:
+    - artifacts/model
   
