@@ -54,8 +54,8 @@ def main(config_path, params_path):
     logging.info(f"Vocab length: {len(vocab)}")
 
     char2idx = {uniChar: idx for idx, uniChar in enumerate(vocab)}
-    idx2char_DICT = {val: key for key, val in char2idx.items()}
-    idx2char = np.array(vocab)
+    #idx2char_DICT = {val: key for key, val in char2idx.items()}
+    #idx2char = np.array(vocab)
 
     # all text is now represented as integer
     text_as_int = np.array([char2idx[c] for c in text_data])
